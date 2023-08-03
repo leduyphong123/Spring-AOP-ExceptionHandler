@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> index </th>
+        <th> email </th>
+        <th> password </th>
+        <th> name </th>
+        <th> action </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${acountList.size() == 0}">
+        <td colspan="2"> No acount Available </td>
+    </tr>
+    <tr th:each="element,thym : ${acountList}">
+        <td><span th:text="${thym.count}">  </span></td>
+        <td><span th:text="${element.email}">  </span></td>
+        <td><span th:text="${element.password}">  </span></td>
+        <td><span th:text="${element.name}">  </span></td>
+        <td>
+            <a th:href="@{/acount/edit/__${element.id}__}">Edit  </a>
+            <a th:href="@{/acount/delete/__${element.id}__}">delete  </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
